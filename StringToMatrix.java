@@ -1,27 +1,25 @@
 package TestFirst;
-
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
-
-
+import java.util.concurrent.TimeUnit;
 
 public class StringToMatrix {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+//long startTime=System.nanoTime();// начальное время
 String matrix = scanString();
+//String matrix ="QLGNAEKIRLRNGEAE";
 int sizeMatrix= findSize(matrix);
-//System.out.println(sizeMatrix);
+System.out.println(sizeMatrix);
 char[][] table=new char [sizeMatrix][sizeMatrix];
 fill(table, matrix);
 String word = scanWord();
+//String word ="KING";
 boolean check= checkWord(matrix, word);
 findChar(word,table,check);
-
-
+//displayExecutionTime(System.nanoTime()-startTime);
 	}
 	public static String deleteRep(String str) { // удаляем повторяющиеся символы
 		StringBuilder xxx=new StringBuilder();
@@ -33,7 +31,7 @@ findChar(word,table,check);
 				xxx.append(str.charAt(i));}
 			}
 		return xxx.toString();
-					}
+	}
 	
 	private static boolean checkWord(String matrixDel, String wordDel) {
 		StringBuilder xxx=new StringBuilder();
@@ -69,9 +67,9 @@ findChar(word,table,check);
 			}
 		}
 			
-				}
+	}
 		else System.out.println("В слове содержатся символы которых нет в матирице");
-		}
+   }
 	
 
 	private static String scanWord() {
@@ -114,6 +112,10 @@ findChar(word,table,check);
 			return scanString(); 
 				}
 		else return matrix;
+	}
+	private static void displayExecutionTime(long Time) {// метод для отображения времени работы прогррамм
+		// TODO Auto-generated method stub
+		System.out.println("Execution Time:" + Time + "ns"+"("+TimeUnit.MILLISECONDS.convert(Time, TimeUnit.NANOSECONDS)+"ms)"+"second"+TimeUnit.SECONDS.convert(Time, TimeUnit.NANOSECONDS));// конвертируем в миселек
 	}
 
 }
